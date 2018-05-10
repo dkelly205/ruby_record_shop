@@ -1,22 +1,23 @@
-class Artist
+class Album
 
-  attr_reader :id, :name
+  attr_reader :id, :title, :artist
   def initialize(options)
     @id = options["id"].to_i()
-    @name = options["name"]
+    @title = options["title"]
+    @artist = options["artist"]
   end
 
   def save()
-    sql = "INSERT INTO artists (name) VALUES ($1) RETURNING id"
-    values = [@name]
+    sql = "INSERT INTO albums (title, artist) VALUES ($1, $2) RETURNING id"
+    values = [@title, @artist]
     @id = SqlRunner.run(sql, values)[0]["id"].to_i()
   end
 
 
     def self.all
-      sql = "SELECT * FROM artists"
-      artist = SqlRunner.run(sql)
-      result = artists.map{|artist| Aritst.new(artist)}
+      sql = "SELECT FROM albums"
+      album = SqlRunner.run(sql)
+      result = albums.map{|album| Album.new(album)}
       return result
     end
 
@@ -28,20 +29,20 @@ class Artist
     end
 
     def self.delete_all
-      sql = "DELETE FROM artists"
+      sql = "DELETE * FROM albums"
       SqlRunner.run(sql)
     end
 
 
       def self.delete(id)
-        sql = "DELETE FROM artists
+        sql = "DELETE FROM albums
         WHERE id = $1"
         values = [id]
         SqlRunner.run( sql, values )
       end
 
       def self.find(id)
-        sql = "SELECT * FROM artists WHERE id = $1"
+        sql = "SELECT * FROM albums WHERE id = $1"
         values = [id]
         customer = SqlRunner.run(sql, values)
         result = Artist.new(artist.first)
@@ -49,7 +50,7 @@ class Artist
       end
 
       def delete()
-        sql = "DELETE FROM artists
+        sql = "DELETE FROM albums
         WHERE id = $1"
         values = [@id]
         SqlRunner.run( sql, values )
