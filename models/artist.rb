@@ -65,17 +65,12 @@ class Artist
     sql = "UPDATE artists
     SET
     (
-      name
+      name, image
       ) =
       (
-        $1
+        $1, $2
       )
-      (
-        image
-        ) =
-        (
-          $2
-        )
+
       WHERE id = $3"
       values = [@name, @image, @id]
       SqlRunner.run( sql, values )
