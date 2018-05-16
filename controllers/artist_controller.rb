@@ -2,11 +2,12 @@ require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 require_relative( '../models/artist.rb' )
+require_relative('../models/album.rb')
 
 
 #index
 get '/artists' do
-  @animals = Animal.all()
+  @artists = Artist.all()
   erb(:"artists/index")
 end
 
@@ -14,7 +15,8 @@ end
 post '/artists' do
   @artist = Artist.new(params)
   @artist.save
-  erb(:"artists/create")
+  redirect to "/artists"
+  
 end
 
 get "/artists/new" do
@@ -27,8 +29,7 @@ get "/artists/:id" do
 end
 
 post "/artists/:id/delete" do
-  @artist = Artist.find(params[:id])
-  @artist.delete()
+  Artist.find(params[:id]).delete()
   redirect to "/artists"
 end
 

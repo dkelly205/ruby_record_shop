@@ -4,19 +4,27 @@
   <title>Danny's Record Store</title>
   <link rel="stylesheet" type="text/css" href="/styles/style.css">
 </head>
+
 <body>
   <div class="container">
-  <header>
-    <h1>Danny's Record Store</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-  <%= yield %>
-  </main>
+    <header>
+      <h1>Danny's Record Store</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/artists">Artists</a></li>
+          <li><a href="/artists/new">Add Artist</a></li>
+          <li><a href="/albums">Albums</a></li>
+
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
   </div>
 </body>
+
 </html>

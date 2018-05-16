@@ -15,13 +15,6 @@ Artist.delete_all
   artist1.save
   artist2.save
 
-  album1 = Album.new({
-    'title' => 'White America',
-    'artist_id' => artist2.id
-
-    })
-
-    album1.save
 
 
   binding pry

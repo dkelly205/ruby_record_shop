@@ -1,9 +1,15 @@
+require_relative('../db/sql_runner.rb')
+require_relative('../models/artist.rb')
+
+
+
 class Album
 
-  attr_reader :id, :title, :artist
+  attr_reader :id, :title, :artist, :quantity
   def initialize(options)
     @id = options["id"].to_i()
     @title = options["title"]
+    @quantity = options["quantity"]
     @artist = options["artist"]
   end
 
@@ -16,7 +22,7 @@ class Album
 
     def self.all
       sql = "SELECT FROM albums"
-      album = SqlRunner.run(sql)
+      albums = SqlRunner.run(sql)
       result = albums.map{|album| Album.new(album)}
       return result
     end
@@ -69,3 +75,4 @@ class Album
         values = [@name, @id]
         SqlRunner.run( sql, values )
       end
+    end

@@ -1,0 +1,10 @@
+<h2>Artists index</h2>
+
+<% @artists.each do |artist| %>
+
+<p><%= artist.name %></p>
+<form method="post" action="/artists/<%= artist.id %>/delete">
+  <input class="form_button" type="submit" value="Delete"/>
+</form>
+
+<% end %>

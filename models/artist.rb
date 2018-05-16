@@ -1,3 +1,7 @@
+require_relative( '../db/sql_runner' )
+require_relative('../models/album.rb')
+
+
 class Artist
 
   attr_reader :id, :name
@@ -8,7 +12,7 @@ class Artist
   end
 
   def save()
-    sql = "INSERT INTO artists (name) VALUES ($1) RETURNING id"
+    sql = "INSERT INTO artists (name) VALUES ($1) RETURNING *"
     values = [@name]
     @id = SqlRunner.run(sql, values)[0]["id"].to_i()
   end
@@ -16,13 +20,13 @@ class Artist
 
   def self.all
     sql = "SELECT * FROM artists"
-    artist = SqlRunner.run(sql)
-    result = artists.map{|artist| Aritst.new(artist)}
+    artists = SqlRunner.run(sql)
+    result = artists.map{|artist| Artist.new(artist)}
     return result
   end
 
   def albums()
-    sql = "SELECT a.* FROM albums a INNER JOIN artists ON albums.ArtistId = artist.id"
+    sql = "SELECT * from albums where artist.id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |album| Album.new(album) }
@@ -44,7 +48,7 @@ class Artist
   def self.find(id)
     sql = "SELECT * FROM artists WHERE id = $1"
     values = [id]
-    customer = SqlRunner.run(sql, values)
+    artist = SqlRunner.run(sql, values)
     result = Artist.new(artist.first)
     return result
   end
