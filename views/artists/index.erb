@@ -5,7 +5,7 @@
 <% @artists.each do |artist| %>
 
 <p><%= artist.name %></p>
-<p><%= artist.image %></p>
+<p><img src='<%= artist.image %>'/></p>
 
 <a class="button" href="/artists/<%= artist.id %>/edit">Update</a>
 <form method="post" action="/artists/<%= artist.id %>/delete">
