@@ -1,15 +1,21 @@
 <h2>Artists index</h2>
 
-<a href="/artists/new">Add Artist</a>
+<p><a href="/artists/new">Add Artist</a></p>
+<div class="flex-container">
+
 
 <% @artists.each do |artist| %>
+<div class="artist">
+<h3><%= artist.name %></h3>
+<img src='<%= artist.image %>'/>
 
-<p><%= artist.name %></p>
-<p><img src='<%= artist.image %>'/></p>
-
-<a class="button" href="/artists/<%= artist.id %>/edit">Update</a>
+<div class="modifier">
+<a class="button" href="/artists/<%= artist.id %>/edit"><img class="button_image" src="edit.jpeg" alt="Update"/></a>
 <form method="post" action="/artists/<%= artist.id %>/delete">
-  <input class="form_button" type="submit" value="Delete <%= artist.name %> "/>
+  <input class="button_image" type="image" src="delete.jpeg" alt="Delete"/>
 </form>
+</div>
+</div>
 
 <% end %>
+</div>
