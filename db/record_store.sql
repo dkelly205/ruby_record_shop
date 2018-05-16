@@ -1,14 +1,12 @@
-DROP TABLE albums;
-
-DROP TABLE artists;
-
+DROP TABLE IF EXISTS albums;
+DROP TABLE IF EXISTS artists;
 
 CREATE TABLE artists
 (
   id SERIAL8 primary key,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  image VARCHAR(255)
 );
-
 
 CREATE TABLE albums
 (

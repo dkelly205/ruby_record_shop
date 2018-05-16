@@ -1,0 +1,27 @@
+<h1>Album new.erb</h1>
+
+<h2>Add Album</h2>
+
+<form class="details" action="/albums" method="post">
+  <p>
+    <label for="name">Title:</label>
+    <input type="text" name="title" id="title" required />
+  </p>
+  <p>
+    <label for="name">Quantity:</label>
+    <input type="text" name="quantity" id="quanity" required />
+  </p>
+  <p>
+    <label for="name">Artist:</label>
+    <select name="artist_id">
+      <% for artist in @artists %>
+      <option value="<%= artist.id %>"><%= artist.name %></option>
+      <% end %>
+    </select>
+  </p>
+
+
+
+  <input class="form_button" type="submit" value="Save" />
+
+</form>

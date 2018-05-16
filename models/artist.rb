@@ -4,7 +4,7 @@ require_relative('../models/album.rb')
 
 class Artist
 
-  attr_reader :id, :name
+  attr_reader :id, :name, :image
 
   def initialize(options)
     @id = options["id"].to_i()
@@ -13,8 +13,8 @@ class Artist
   end
 
   def save()
-    sql = "INSERT INTO artists (name) VALUES ($1) RETURNING *"
-    values = [@name]
+    sql = "INSERT INTO artists (name, image) VALUES ($1, $2) RETURNING *"
+    values = [@name, @image]
     @id = SqlRunner.run(sql, values)[0]["id"].to_i()
   end
 
@@ -70,8 +70,14 @@ class Artist
       (
         $1
       )
-      WHERE id = $2"
-      values = [@name, @id]
+      (
+        image
+        ) =
+        (
+          $2
+        )
+      WHERE id = $3"
+      values = [@name, @image, @id]
       SqlRunner.run( sql, values )
   end
 end

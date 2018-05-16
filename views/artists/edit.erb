@@ -1,1 +1,15 @@
 <h2>Edit artist</h2>
+
+<form class="details" action="/artists/<%=artist.id %>" method="post">
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= @artist.name %>"required />
+  </p>
+  <p>
+    <label for="name">Image:</label>
+    <input type="text" name="image" id="image" value="<%= @artist.image %>"required />
+
+  </p>
+  <input class="form_button" type="submit" value="Save" />
+
+</form>

@@ -16,7 +16,6 @@ post '/artists' do
   @artist = Artist.new(params)
   @artist.save
   redirect to "/artists"
-  
 end
 
 get "/artists/new" do

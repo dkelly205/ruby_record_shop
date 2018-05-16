@@ -5,17 +5,17 @@ require_relative('../models/artist.rb')
 
 class Album
 
-  attr_reader :id, :title, :artist, :quantity
+  attr_reader :id, :title, :artist_id, :quantity
   def initialize(options)
     @id = options["id"].to_i()
     @title = options["title"]
     @quantity = options["quantity"]
-    @artist = options["artist"]
+    @artist_id = options["artist_id"].to_i
   end
 
   def save()
-    sql = "INSERT INTO albums (title, artist) VALUES ($1, $2) RETURNING id"
-    values = [@title, @artist]
+    sql = "INSERT INTO albums (title, quantity, artist_id) VALUES ($1, $2, $3) RETURNING id"
+    values = [@title, @quanity, @artist_id]
     @id = SqlRunner.run(sql, values)[0]["id"].to_i()
   end
 
@@ -27,12 +27,6 @@ class Album
       return result
     end
 
-    def albums()
-      sql = "SELECT a.* FROM albums a INNER JOIN artists ON albums.ArtistId = artist.id"
-      values = [@id]
-      results = SqlRunner.run(sql, values)
-      return results.map { |album| Album.new(album) }
-    end
 
     def self.delete_all
       sql = "DELETE * FROM albums"
@@ -61,18 +55,18 @@ class Album
         values = [@id]
         SqlRunner.run( sql, values )
       end
-
-      def update()
-        sql = "UPDATE artists
-        SET
-        (
-          name
-        ) =
-        (
-          $1
-        )
-        WHERE id = $2"
-        values = [@name, @id]
-        SqlRunner.run( sql, values )
-      end
+      #
+      # def update()
+      #   sql = "UPDATE albums
+      #   SET
+      #   (
+      #     title
+      #   ) =
+      #   (
+      #     $1
+      #   )
+      #   WHERE id = $2"
+      #   values = [@name, @id]
+      #   SqlRunner.run( sql, values )
+      # end
     end

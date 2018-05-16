@@ -6,16 +6,19 @@ Album.delete_all
 Artist.delete_all
 
   artist1 = Artist.new({
-  'name' => 'Oasis'})
-
-  artist2 = Artist.new({
-  'name' => 'Eminem'})
-
+  'name' => 'Oasis',
+  'image' => 'n/a'})
 
   artist1.save
-  artist2.save
+
+  album1 = Album.new({
+    'name' => 'Wonderwall',
+    'quantity' => 1,
+    'artist_id' => artist1.id
+    })
 
 
+  album1.save
 
   binding pry
   nil
