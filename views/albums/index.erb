@@ -2,13 +2,29 @@
 
 <a href="/albums/new">Add Album</a>
 
+
+Stock:<select>
+  <option>All</option>
+  <option>High</option>
+  <option>Medium</option>
+  <option>Low</option>
+</select>
+
+
+<div class="flex-container">
+
+
 <% @albums.each do |album| %>
+<div class="albums">
   <p>Title: <%= album.title %></p>
   <p>Quantity: <%= album.quantity %></p>
   <p>Artist: <a href="/artists/<%= album.artist_id %>"><%= Artist.find(album.artist_id).name %></a></p>
 
+  <div class="modifier">
 
 <a class="button" href="/albums/<%= album.id %>/edit"><img class="button_image" src="edit.jpeg" alt="Update"/></a>
 <a class="button" href="/albums/<%= album.id %>/delete"><img class="button_image" src="delete.jpeg" alt="Delete"/></a>
-
+</div>
+</div>
 <% end %>
+</div>

@@ -69,4 +69,14 @@ class Album
         values = [@title, @quantity, @artist_id, @id]
         SqlRunner.run( sql, values )
       end
+
+      def stock_count()
+        if @quantity > 20
+          return 'high'
+        elsif @quantity > 10
+          return 'medium'
+        else
+          return 'low'
+        end
+      end
     end

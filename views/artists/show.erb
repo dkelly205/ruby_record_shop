@@ -1,19 +1,21 @@
 
 <div class="artist">
-<h3><%= @artist.name %></h3>
-<img src='/<%= @artist.image %>'/>
+  <h3><%= @artist.name %></h3>
+  <img src='/<%= @artist.image %>'/>
+</div>
 
-<h4>Albums</h4>
 
 <% if @albums.length() >= 1 %>
+  <h4>Albums</h4>
 
-  <% for album in @albums %>
-        <p>Title: <%= album.title %></p>
-        <p>Quantity: <%= album.quantity %></p>
-
-      <% end %>
-      <% end %>
+  <div class="flex-container">
+    <% for album in @albums %>
+    <div class="albums">
+      <p>Title: <%= album.title %></p>
+      <p>Quantity: <%= album.quantity %></p>
+    </div>
+    <% end %>
+  </div>
+<% end %>
 
 <a class="button" href="/artists">Cancel</a>
-
-</div>
