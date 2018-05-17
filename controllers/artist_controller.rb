@@ -24,9 +24,14 @@ end
 
 get "/artists/:id" do
   @artist = Artist.find(params[:id])
+  @albums = @artist.albums
   erb(:"artists/show")
 end
 
+get "/artists/:id/delete" do
+  @artist = Artist.find(params[:id])
+  erb(:"artists/delete")
+end
 post "/artists/:id/delete" do
   Artist.find(params[:id]).delete()
   redirect to "/artists"

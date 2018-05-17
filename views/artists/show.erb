@@ -3,6 +3,17 @@
 <h3><%= @artist.name %></h3>
 <img src='/<%= @artist.image %>'/>
 
+<h4>Albums</h4>
+
+<% if @albums.length() >= 1 %>
+
+  <% for album in @albums %>
+        <p>Title: <%= album.title %></p>
+        <p>Quantity: <%= album.quantity %></p>
+
+      <% end %>
+      <% end %>
+
 <a class="button" href="/artists">Cancel</a>
 
 </div>
