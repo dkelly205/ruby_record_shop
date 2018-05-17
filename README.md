@@ -16,17 +16,17 @@ You should be able to add stock, which would have an Artist and Album as well as
 
 To run the app:
 
-- Clone the app 
+- Clone the app
 
 - In terminal create the database using the following command:  
 
                                 createdb record_shop
 
-- Run the app from folder record_shop_project in terminal using the following command: 
+- Run the app from folder record_shop_project in terminal using the following command:
 
-                                ruby app.rb 
-                                
-- View the app at http://localhost:4567/
+                                ruby app.rb
+
+- View the app at http://localhost:4567/artists
 
 
 Project Rules:
@@ -41,5 +41,3 @@ It must NOT use:
   - Any Object Relational Mapper (e.g. ActiveRecord)
   - JavaScript. At all. Don't even think about it
   - Authentication
-
-
