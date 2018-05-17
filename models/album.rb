@@ -71,12 +71,14 @@ class Album
       end
 
       def stock_count()
-        if @quantity > 20
-          return 'high'
+      if @quantity == 0
+        return 'Out of Stock'
+      elsif @quantity > 20
+          return 'High'
         elsif @quantity > 10
-          return 'medium'
+          return 'Medium'
         else
-          return 'low'
+          return 'Low'
         end
       end
     end
