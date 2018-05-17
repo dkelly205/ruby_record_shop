@@ -11,6 +11,18 @@ ul{
   list-style-type: none;
 }
 
+ul li{
+  display:inline-block;
+}
+
+ li a{
+  padding: 12px;
+  background-color: #dddddd;
+  text-decoration: none;
+  color: black;
+}
+}
+
 h3{text-align: center;}
 
 img{
