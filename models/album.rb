@@ -55,18 +55,18 @@ class Album
         values = [@id]
         SqlRunner.run( sql, values )
       end
-      #
-      # def update()
-      #   sql = "UPDATE albums
-      #   SET
-      #   (
-      #     title
-      #   ) =
-      #   (
-      #     $1
-      #   )
-      #   WHERE id = $2"
-      #   values = [@name, @id]
-      #   SqlRunner.run( sql, values )
-      # end
+
+      def update()
+        sql = "UPDATE albums
+        SET
+        (
+          title, quantity, artist_id
+        ) =
+        (
+          $1, $2, $3
+        )
+        WHERE id = $4"
+        values = [@title, @quantity, @artist_id, @id]
+        SqlRunner.run( sql, values )
+      end
     end

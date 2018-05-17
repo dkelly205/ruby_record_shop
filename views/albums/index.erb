@@ -3,7 +3,12 @@
 <a href="/albums/new">Add Album</a>
 
 <% @albums.each do |album| %>
-<p><%= album.title %></p>
+  <p>Title: <%= album.title %></p>
+  <p>Quantity: <%= album.quantity %></p>
+  <p>Artist: <a href="/artists/<%= album.artist_id %>"><%= Artist.find(album.artist_id).name %></a></p>
+
+
+<a class="button" href="/albums/<%= album.id %>/edit"><img class="button_image" src="edit.jpeg" alt="Update"/></a>
 <a class="button" href="/albums/<%= album.id %>/delete"><img class="button_image" src="delete.jpeg" alt="Delete"/></a>
 
 <% end %>
