@@ -29,3 +29,17 @@ To run the app:
 - View the app at http://localhost:4567/
 
 
+Project Rules:
+
+The project must be built using only:
+  - Sinatra
+  - PostGRES SQL
+  - HTML / CSS
+  - Ruby
+
+It must NOT use:
+  - Any Object Relational Mapper (e.g. ActiveRecord)
+  - JavaScript. At all. Don't even think about it
+  - Authentication
+
+
