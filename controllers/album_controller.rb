@@ -1,6 +1,6 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
-require( 'pry-byebug' )
+# require( 'pry-byebug' )
 require_relative( '../models/album.rb' )
 require_relative( '../models/artist.rb' )
 
@@ -43,7 +43,7 @@ end
 get "/albums/:id/edit" do
   @album = Album.find(params[:id])
   @artists = Artist.all()
-  
+
   erb(:"albums/edit")
 end
 
