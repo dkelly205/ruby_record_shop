@@ -21,6 +21,10 @@ To run the app:
 - In terminal create the database using the following command:  
 
                                 createdb record_shop
+                                
+- In terminal run the following command to create tables:
+                  
+                               psql -d record_shop -f db/record_store.sql
 
 - Run the app from folder record_shop_project in terminal using the following command:
 
@@ -41,3 +45,13 @@ It must NOT use:
   - Any Object Relational Mapper (e.g. ActiveRecord)
   - JavaScript. At all. Don't even think about it
   - Authentication
+  
+  
+Artists
+![image](https://user-images.githubusercontent.com/34646693/40716206-122fae44-6400-11e8-869b-41cb5f928a9c.png)
+
+Albums
+![image](https://user-images.githubusercontent.com/34646693/40716229-1dc727e6-6400-11e8-8bfe-571aee1f783d.png)
+
+Artist
+![image](https://user-images.githubusercontent.com/34646693/40716244-2519a88e-6400-11e8-94d0-69eb981392f2.png)
